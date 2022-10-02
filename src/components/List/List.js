@@ -2,6 +2,8 @@ import { Component } from "react";
 import ListService from "../services/ListService";
 import { nanoid } from "nanoid";
 
+import './list.css'
+
 class List extends Component {
   state = {
     items: [],
@@ -15,7 +17,6 @@ class List extends Component {
   }
 
   onRequest = () => {
-    console.log("request");
     this.listService
       .getAllItems()
       .then(this.onItemsListLoaded)
@@ -41,7 +42,10 @@ class List extends Component {
 
   render() {
     const itemsList = this.state.items.map((item) => {
-      return <li>{item.name}</li>;
+        return <li
+            key={item.id}
+            className='items__item'
+        >{item.name}</li>;
     });
 
     return <ul className="items__list">{itemsList}</ul>;

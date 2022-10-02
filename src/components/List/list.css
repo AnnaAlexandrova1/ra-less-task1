@@ -1,0 +1,14 @@
+.items__list{
+    list-style: none;
+    width: 20em;
+}
+
+.items__item {
+   border: 1px solid black;
+   padding: 10px;
+}
+
+.items__item:hover {
+   background-color: blue;
+   color: azure;
+}
