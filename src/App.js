@@ -1,5 +1,6 @@
 import List from './components/List/List';
 import './App.css';
+import Details from './components/Details/Details';
 
 function App() {
   return (
