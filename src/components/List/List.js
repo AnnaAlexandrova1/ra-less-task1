@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import ListService from "../services/ListService";
-import Details from "../Details/Details";
-
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./list.css";
 
 const List = (props) => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
-  const [onclick, setOnclick] = useState(false);
 
   const listService = new ListService();
 
@@ -55,56 +53,17 @@ const List = (props) => {
   }
 
   const itemsList = renderItems(items);
-  return <ul className="items__list">{itemsList}</ul>;
+  const errorMessage = error ? <ErrorMessage /> : null;
+  return (
+    <ul className="items__list">
+      {itemsList}
+      {errorMessage}
+    </ul>
+  );
 };
 
 List.propTypes = {
-    onCharSelected: PropTypes.func.isRequired
-}
-
-// class List extends Component {
-//   state = {
-//     items: [],
-//     error: false,
-//     onclick: false
-//   };
-
-//   listService = new ListService();
-
-//   componentDidMount() {
-//     this.onRequest();
-//   }
-
-//   onRequest = () => {
-//     this.listService
-//       .getAllItems()
-//       .then(this.onItemsListLoaded)
-//       .catch(this.onError);
-//   };
-
-//   onItemsListLoaded = (newItemsList) => {
-//     this.setState({
-//       items: [...newItemsList],
-//     });
-//   };
-
-//   onError = () => {
-//     this.setState({
-//       error: true,
-//     });
-//   };
-
-//   render() {
-//     const itemsList = this.state.items.map((item) => {
-//         return <li
-//             key={item.id}
-//             className='items__item'
-//             onClick={() => Details(item.name)}
-//         >{item.name}</li>;
-//     });
-
-//     return <ul className="items__list">{itemsList}</ul>;
-//   }
-// }
+  onCharSelected: PropTypes.func.isRequired,
+};
 
 export default List;

@@ -5,4 +5,7 @@
 .container{
   width: 85%;
   margin: 150px auto;
+
+  display: flex;
+  flex-direction: row;
 }

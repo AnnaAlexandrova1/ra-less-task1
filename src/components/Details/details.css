@@ -1,0 +1,16 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+}
+
+.item div{
+   border: 1px solid black;
+   padding: 10px;
+}
+
+.item img{
+    min-height: 350px;
+    min-width: 100%;
+    background-color: gray;
+}

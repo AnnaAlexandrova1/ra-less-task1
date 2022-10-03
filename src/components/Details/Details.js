@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import PropTypes from "prop-types";
 import Spinner from '../Spinner/Spinner'
 import ListService from '../services/ListService';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import './details.css'
 
 const Details = (props) => {
     const [item, setItem] = useState(null);
@@ -41,11 +42,15 @@ const Details = (props) => {
     }
 
     const content = !(loading || error || !item) ? <DrowItem char={item} /> : null
-    
+    const spinner = loading ? <Spinner /> : null
+    const errorMessage = error ? <ErrorMessage /> : null
+
     return (
-        <>
+        <div className='item'>
             {content}
-        </>
+            {spinner}
+            {errorMessage}
+       </div>
     )
 
 }
@@ -54,15 +59,14 @@ const Details = (props) => {
         if (!char) {
             return
      }
-     console.log(char.char.avatar)
         return (
-            <div>
+            <>
                 <img src={char.char.avatar} alt={char.char.name}/>
                 <div>{char.char.name}</div>
                 <div>City: {char.char.details.city}</div>
                 <div>Company: {char.char.details.company}</div>
                 <div>Position: {char.char.details.position}</div>
-            </div>
+            </>
         )
     }
         
