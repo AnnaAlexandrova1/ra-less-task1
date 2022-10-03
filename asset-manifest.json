@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ra-less-task1/static/css/main.4383bcdf.css",
+    "main.js": "/ra-less-task1/static/js/main.297d5d6c.js",
+    "static/media/error.gif": "/ra-less-task1/static/media/error.42292aa12b6bc303ce99.gif",
+    "index.html": "/ra-less-task1/index.html",
+    "main.4383bcdf.css.map": "/ra-less-task1/static/css/main.4383bcdf.css.map",
+    "main.297d5d6c.js.map": "/ra-less-task1/static/js/main.297d5d6c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4383bcdf.css",
+    "static/js/main.297d5d6c.js"
+  ]
+}
