@@ -1,5 +1,5 @@
-import {useState, useEffect, useRef} from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import ListService from "../services/ListService";
 import Details from "../Details/Details";
 
@@ -9,7 +9,6 @@ const List = (props) => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const [onclick, setOnclick] = useState(false);
-    
 
   const listService = new ListService();
 
@@ -22,44 +21,46 @@ const List = (props) => {
   };
 
   const onItemsListLoaded = (newItemsList) => {
-    setItems((items) => [ ...newItemsList]);
+    setItems((items) => [...newItemsList]);
   };
 
   const onError = () => {
     setError(true);
-    };
-    
-    const itemRefs = useRef([])
+  };
 
-    const focusOnItem = (id) =>  {
-     itemRefs.current.forEach(item => item.classList.remove('selected'));
-        itemRefs.current[id].classList.add('selected');
-        itemRefs.current[id].focus();
-  }
+  const itemRefs = useRef([]);
+
+  const focusOnItem = (id) => {
+    itemRefs.current.forEach((item) => item.classList.remove("selected"));
+    itemRefs.current[id].classList.add("selected");
+    itemRefs.current[id].focus();
+  };
 
   function renderItems(arr) {
     return arr.map((item) => {
       return (
         <li
-              key={item.id}
-              className="items__item"
-              ref={el => itemRefs.current[item.id] = el}
-              onClick={() => {
-                  props.onCharSelected(item.name)
-                  focusOnItem(item.id);
-              }}
+          key={item.id}
+          className="items__item"
+          ref={(el) => (itemRefs.current[item.id] = el)}
+          onClick={() => {
+            props.onCharSelected(item.id);
+            focusOnItem(item.id);
+          }}
         >
           {item.name}
         </li>
       );
     });
-    }
-    
-    const itemsList = renderItems(items)
-    return (
-       <ul className="items__list">{itemsList}</ul> 
-    )
+  }
+
+  const itemsList = renderItems(items);
+  return <ul className="items__list">{itemsList}</ul>;
 };
+
+List.propTypes = {
+    onCharSelected: PropTypes.func.isRequired
+}
 
 // class List extends Component {
 //   state = {
